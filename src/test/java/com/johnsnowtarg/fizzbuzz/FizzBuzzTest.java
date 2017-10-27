@@ -11,8 +11,17 @@ import org.junit.Test;
 public class FizzBuzzTest {
 
 	/**
-	 * TEST for VALID INPUTS
+	 * TEST for VALID INPUTS 
 	 * 
+	 * should take positive number as a valid input
+	 */
+	
+	@Test
+	public void testisUpperBoundValidForPositiveNumber() {
+		FizzBuzz.isUpperBoundValid(1);
+	}
+	
+	/* 
 	 * should return empty list for all fizz,buzz,fizzbuzz for upperbound as 0
 	 */
 	@Test
@@ -22,7 +31,7 @@ public class FizzBuzzTest {
 		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getBuzz(), is(empty()));
 		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizzBuzz(), is(empty()));
 	}
-	
+
 	/**
 	 * should return empty list for all fizz,buzz,fizzbuzz for upperbound as 1
 	 */
@@ -73,9 +82,8 @@ public class FizzBuzzTest {
 	 * should throw exception for Negative numbers
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testgetFizzBuzzForNegativeNumber() {
-		FizzBuzz.getFizzBuzzFor(-1);
+	public void testisUpperBoundValidForNegativeNumber() {
+		FizzBuzz.isUpperBoundValid(-1);
 	}
-
 
 }

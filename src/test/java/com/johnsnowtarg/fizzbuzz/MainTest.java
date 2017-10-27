@@ -1,24 +1,19 @@
 package com.johnsnowtarg.fizzbuzz;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
+import java.util.Arrays;
+
 import org.junit.Test;
 
 public class MainTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+	/**
+	 * display list as a comma seperated string
+	 */
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testgetDelimitedList() {
+		assertEquals("1,2,4,7", Main.getDelimitedList(Arrays.asList(1,2,4,7), ","));
 	}
 
 }
