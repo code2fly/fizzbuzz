@@ -21,7 +21,7 @@ If non numeric or negative number is entered user will be prompted to re-enter a
 2. in the project root folder (fizzbuzz) run the below command to build the application.
 mvn package
 3. To execute -
-  i) For windows execute run.bat
+  i) For windows execute "run_windows.bat"
+  ii) For linux based environment execute "sh run_linux.sh"
   ii) For eclipse execute com.johnsnowtarg.fizzbuzz.Main.java
-  
  
