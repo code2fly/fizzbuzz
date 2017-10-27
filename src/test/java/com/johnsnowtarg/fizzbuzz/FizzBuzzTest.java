@@ -1,62 +1,81 @@
 package com.johnsnowtarg.fizzbuzz;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.hamcrest.Matchers.empty;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
-import java.util.List;
-import static org.hamcrest.Matchers.*;
+
 import org.junit.Test;
 
 public class FizzBuzzTest {
 
+	/**
+	 * TEST for VALID INPUTS
+	 * 
+	 * should return empty list for all fizz,buzz,fizzbuzz for upperbound as 0
+	 */
 	@Test
-	public void shouldReturnEmptyFizzAndEmptyBuzz() {
-		int upperBound = 2;
-		FizzBuzzResult fizzbuzzResult = FizzBuzz.getFizzBuzzFor(upperBound);
-		assertThat(fizzbuzzResult.getFizz(), is(empty()));
-		assertThat(fizzbuzzResult.getBuzz(), is(empty()));
-		assertThat(fizzbuzzResult.getFizzBuzz(), is(empty()));
+	public void testgetFizzBuzzForZero() {
+		int upperBound = 0;
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizz(), is(empty()));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getBuzz(), is(empty()));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizzBuzz(), is(empty()));
+	}
+	
+	/**
+	 * should return empty list for all fizz,buzz,fizzbuzz for upperbound as 1
+	 */
+	@Test
+	public void testgetFizzBuzzForOne() {
+		int upperBound = 1;
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizz(), is(empty()));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getBuzz(), is(empty()));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizzBuzz(), is(empty()));
 	}
 
+	/**
+	 * should return 3 in fizz and empty buzz,fizzbuzz
+	 */
 	@Test
-	public void shouldReturnFizzAndEmptyBuzz() {
-		FizzBuzzResult fizzbuzzResult = FizzBuzz.getFizzBuzzFor(3);
-		assertThat(fizzbuzzResult.getFizz(), is(Arrays.asList(3)));
-		assertThat(fizzbuzzResult.getBuzz(), is(empty()));
-		assertThat(fizzbuzzResult.getFizzBuzz(), is(empty()));
+	public void testgetFizzBuzzForFour() {
+		int upperBound = 4;
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizz(), is(Arrays.asList(3)));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getBuzz(), is(empty()));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizzBuzz(), is(empty()));
 	}
-	
-	
-	
+
+	/**
+	 * should return 3,6 in fizz and 5 in buzz with empty fizzbuzz
+	 */
 	@Test
-	public void shouldReturnBothFizzAndBuzz() {
-		FizzBuzzResult fizzbuzzResult = FizzBuzz.getFizzBuzzFor(6);
-		assertThat(fizzbuzzResult.getFizz(), is(Arrays.asList(3,6)));
-		assertThat(fizzbuzzResult.getBuzz(), is(Arrays.asList(5)));
-		assertThat(fizzbuzzResult.getFizzBuzz(), is(empty()));
+	public void testgetFizzBuzzForSix() {
+		int upperBound = 6;
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizz(), is(Arrays.asList(3, 6)));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getBuzz(), is(Arrays.asList(5)));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizzBuzz(), is(empty()));
 	}
-	
+
+	/**
+	 * should return 3,6,9,12 for fizz, 5,10 for buzz and 15 for fizzbuzz
+	 */
 	@Test
-	public void shouldReturnAllFizzAndBuzzAndFizzBuzz() {
-		FizzBuzzResult fizzbuzzResult = FizzBuzz.getFizzBuzzFor(15);
-		assertThat(fizzbuzzResult.getFizz(), is(Arrays.asList(3,6,9,12)));
-		assertThat(fizzbuzzResult.getBuzz(), is(Arrays.asList(5,10)));
-		assertThat(fizzbuzzResult.getFizzBuzz(), is(Arrays.asList(15)));
+	public void testgetFizzBuzzForFifteen() {
+		int upperBound = 15;
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizz(), is(Arrays.asList(3, 6, 9, 12)));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getBuzz(), is(Arrays.asList(5, 10)));
+		assertThat(FizzBuzz.getFizzBuzzFor(upperBound).getFizzBuzz(), is(Arrays.asList(upperBound)));
 	}
-	
-	
-	@Test(expected= IllegalArgumentException.class)
-	public void shouldThrowForZero() {
-		FizzBuzz.getFizzBuzzFor(0);		
+
+	/**
+	 * TEST for INVALID input
+	 * 
+	 * should throw exception for Negative numbers
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testgetFizzBuzzForNegativeNumber() {
+		FizzBuzz.getFizzBuzzFor(-1);
 	}
-	
-	@Test(expected= IllegalArgumentException.class)
-	public void shouldThrowForNegativeNumber() {
-		FizzBuzz.getFizzBuzzFor(-3);		
-	}
+
 
 }
